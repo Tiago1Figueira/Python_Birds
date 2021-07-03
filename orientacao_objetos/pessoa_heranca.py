@@ -7,7 +7,7 @@ class Pessoa():
         self.nome = nome
 
     def cumprimentar(self):
-        return f'Olá {id(self)}'
+        return f'Olá {self.id}'
 
     @staticmethod #usado pra criar método de classe sem relação com a classe ou objeto.
     def metodo_estatico():
