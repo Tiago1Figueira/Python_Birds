@@ -7,7 +7,7 @@ class Pessoa():
         self.nome = nome
 
     def cumprimentar(self):
-        return f'Olá {self.id}'
+        return f'Olá {self.nome}'
 
     @staticmethod #usado pra criar método de classe sem relação com a classe ou objeto.
     def metodo_estatico():
@@ -17,8 +17,8 @@ class Pessoa():
     def nome_e_atributos_de_classe(cls):
         return f'{cls} , olhos {cls.olhos} '
 
-    class Homem(Pessoa):#A classe homem herdou todos os atributos da classe 'Pessoa'.
-        pass
+class Homem(Pessoa):#A classe homem herdou todos os atributos da classe 'Pessoa'.
+    pass
 
 
 if __name__ == '__main__':

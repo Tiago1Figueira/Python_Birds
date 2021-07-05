@@ -65,9 +65,6 @@ Exemplo
     'Leste'
     >>> direcao.girar_a_esquerda()
     >>> direcao.valor
-    'Sul'
-    >>> direcao.girar_a_esquerda()
-    >>> direcao.valor
     'Norte'
     >>> #aqui a classe carro delega as lógicas acima para os objetos(direção e motor)
     >>> #através de composição(ajuntar todos delegando o q cada um faz)
@@ -144,10 +141,10 @@ class Carro:
     def calcular_direcao(self):
         return self.direcao.valor
 
-    def calcular_girar_a_direita(self):
+    def girar_a_direita(self):
         self.direcao.girar_a_direita()
 
-    def calcular_girar_a_esquerda(self):
+    def girar_a_esquerda(self):
         self.direcao.girar_a_esquerda()
 
 
