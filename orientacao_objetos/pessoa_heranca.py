@@ -9,6 +9,7 @@ class Pessoa():
     def cumprimentar(self):
         return f'Olá {self.nome}'
 
+
     @staticmethod #usado pra criar método de classe sem relação com a classe ou objeto.
     def metodo_estatico():
         return 42
