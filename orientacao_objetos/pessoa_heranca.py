@@ -20,10 +20,11 @@ class Pessoa():
 
 class Homem(Pessoa):#A classe homem herdou todos os atributos da classe 'Pessoa'.
     pass
-
+class Mutante(Pessoa):#A classe Mutante herdou todos os atributos da classe 'Pessoa'(conceito de sobrescrita).
+    olhos = 3 # aqui a sobrescrita do dado olhos sobrepoe o dado olhos herdado da classe Pessoa de dois para 3 olhos.
 
 if __name__ == '__main__':
-    renzo = Homem(nome='Renzo') # o nome renzo é do tipo pessoa (tipo = int, float, e aqui pessoa)
+    renzo = Mutante(nome='Renzo') # o nome renzo é do tipo pessoa (tipo = int, float, e aqui pessoa)
     luciano = Homem(renzo, nome='Luciano') # aqui colocamos renzo como parametro ligado ao parâmetro filhos acima descrito e atributo de luciano.
     print(Pessoa.cumprimentar(luciano))#forma não usual de execução do método da classe.
     print(id(luciano))
@@ -37,7 +38,8 @@ if __name__ == '__main__':
     # e os criados dinâmicamente.
     #del luciano.filhos = deleta o atributo filhos criado no atributo do método.
     del luciano.filhos
-    Pessoa.olhos = 3 # aqui houve a mudança do valor da classe pessoa o que altera o valor desse atributo para todos os objetos criados.
+    #Pessoa.olhos = 3 # aqui houve a mudança do valor da classe pessoa o que altera o valor desse atributo para todos os objetos criados.
+    #item acima virou comentário para que o conceito de sobrescrita fosse trabalhado.
     luciano.olhos = 1 # aqui o valor do atributo olhos mudou de 2 pra 1. Isso é constado pelo __dict__.
     del luciano.olhos # apagando-se o atributo dinâmico luciano.olhos=1 o valor do atributo olhos volta a ser 3.
     print(luciano.__dict__)
@@ -56,10 +58,11 @@ if __name__ == '__main__':
 
     # podemos usar a ferramenta 'isinstance' para saber se um dado objeto é de determinado tipo/classe.
     pessoa = Pessoa('anonima') # pessoa(minusculo)é objeto Pessoa(maiusculo) é a classe.
-    print = (isinstance(pessoa, Pessoa))
-    print = (isinstance(pessoa, Homem))
-    print = (isinstance(renzo, Pessoa))
-    print = (isinstance(renzo, Homem))
+    print(isinstance(pessoa, Pessoa))
+    print(isinstance(pessoa, Homem))
+    print(isinstance(renzo, Pessoa))
+    print(isinstance(renzo, Homem))
+    print(renzo.olhos)
 
 
 
