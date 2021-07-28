@@ -23,6 +23,7 @@ class Homem(Pessoa):#A classe homem herdou todos os atributos da classe 'Pessoa'
         cumprimentar_da_classe=super().cumprimentar() #'Super()'faz com que o print mostre a caracteristica da classe herdada nao importando se houver mudança da classe herdade exemplo de Pessoa para Mutante ou vice-versa.
         return f'{cumprimentar_da_classe}. Aperto de mão!'
 
+
 class Mutante(Pessoa):#A classe Mutante herdou todos os atributos da classe 'Pessoa'(conceito de sobrescrita).
     olhos = 3 # aqui a sobrescrita do dado olhos sobrepoe o dado olhos herdado da classe Pessoa de dois para 3 olhos.
 
