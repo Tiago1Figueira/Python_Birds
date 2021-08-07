@@ -38,22 +38,27 @@ class Ator():
         :param tempo: o tempo do jogo
         :return: posição x, y do ator
         """
-        return 1, 1
+        return self.x, self.y
 
     def colidir(self, outro_ator, intervalo=1):
         """
         Método que executa lógica de colisão entre dois atores.
         Só deve haver colisão se os dois atores tiverem seus status ativos.
-        Para colisão, é considerado um quadrado, com lado igual ao parâmetro intervalo, em volta do ponto onde se
-        encontra o ator. Se os atores estiverem dentro desse mesmo quadrado, seus status devem ser alterados para
-        destruido, seus caracteres para destruido também.
+        Para colisão, é considerado um quadrado, com lado igual ao parâmetro intervalo,
+        em volta do ponto onde se encontra o ator. Se os atores estiverem dentro desse mesmo
+        quadrado,seus status devem ser alterados para destruido, seus caracteres para
+        destruido também.
 
         :param outro_ator: Ator a ser considerado na colisão
         :param intervalo: Intervalo a ser considerado
         :return:
         """
-        pass
-
+        # abaixo está o conceito de abs() absoluto.
+        if self.status == ATIVO and outro_ator.status == ATIVO:
+            delta_x = abs(self.x - outro_ator.x)
+            delta_y = abs(self.y - outro_ator.y)
+            if delta_x<=intervalo and delta_y<=intervalo:
+                self.status=outro_ator.status=DESTRUIDO
 
 class Obstaculo(Ator):
     _caracter_ativo = 'O'
@@ -61,6 +66,7 @@ class Obstaculo(Ator):
 
 class Porco(Ator):
     _caracter_ativo = '@'
+    _caracter_destruido = '+'
 
 
 class DuploLancamentoExcecao(Exception):
@@ -92,6 +98,8 @@ class Passaro(Ator):
 
         :return: booleano
         """
+        if self._tempo_de_lancamento is None:
+           return False
         return True
 
     def colidir_com_chao(self):
@@ -116,7 +124,11 @@ class Passaro(Ator):
         :param tempo: tempo de jogo a ser calculada a posição
         :return: posição x, y
         """
-        return 1, 1
+        # Abaixo segue um código que exprime uma equação apresentado no readme forkado
+        # para método posição vertical e método posição horizontal.
+        if self.foi_lancado():
+            delta_t= tempo-self._tempo_de_lancamento
+        return super().calcular_posicao(tempo)
 
 
     def lancar(self, angulo, tempo_de_lancamento):
@@ -128,12 +140,24 @@ class Passaro(Ator):
         :param tempo_de_lancamento:
         :return:
         """
-        pass
+        self._angulo_de_lancamento = angulo
+        self._tempo_de_lancamento = tempo_de_lancamento
 
+        # Abaixo segue um código que exprime uma equação apresentado no readme forkado
+        # para método posição vertical e método posição horizontal.
 
+    def calcular_posicao_vertical(self, delta_t):
+        aux
 class PassaroAmarelo(Passaro):
     _caracter_ativo = 'A'
+    _caracter_destruido = 'a'
+    velocidade_escalar = 30
 
 
 class PassaroVermelho(Passaro):
     _caracter_ativo = 'V'
+    _caracter_destruido = 'v'
+    velocidade_escalar = 20
+
+
+
